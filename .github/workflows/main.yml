@@ -20,16 +20,12 @@ jobs:
       run: |
         msbuild LaserGRBL.sln /p:Configuration=Release
 
-    - name: dir
-      run: |
-        dir /s /b bin
-
     - name: Create Release Package
       run: |
         # 假设生成的文件在 bin/Release 目录下
         mkdir release
         # 将生成的文件打包成 zip 文件
-        powershell -command "Compress-Archive -Path 'bin\Release\*' -DestinationPath 'release\package.zip'"
+        Compress-Archive -Path 'bin\*' -DestinationPath 'release\package.zip'
 
     - name: Create Release
       id: create_release
