@@ -20,12 +20,16 @@ jobs:
       run: |
         msbuild LaserGRBL.sln /p:Configuration=Release
 
+    - name: dir
+      run: |
+        dir /s /b bin
+
     - name: Create Release Package
       run: |
         # 假设生成的文件在 bin/Release 目录下
         mkdir release
         # 将生成的文件打包成 zip 文件
-        powershell -command "Compress-Archive -Path 'bin\Release\*' -DestinationPath 'package.zip'"
+        powershell -command "Compress-Archive -Path 'bin\Release\*' -DestinationPath 'release\package.zip'"
 
     - name: Create Release
       id: create_release
@@ -42,6 +46,6 @@ jobs:
       uses: softprops/action-gh-release@v1
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: package.zip
+        asset_path: release\package.zip
         asset_name: package.zip
         asset_content_type: application/zip
