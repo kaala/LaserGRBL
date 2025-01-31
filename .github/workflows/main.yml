@@ -18,7 +18,7 @@ jobs:
 
     - name: Build the project
       run: |
-        msbuild LaserGRBL.sln /p:Configuration=Release
+        msbuild LaserGRBL.sln /p:Configuration=Release /p:BaseOutputPath=${{ github.workspace }}
 
     - name: Create Release Package
       run: |
@@ -29,7 +29,7 @@ jobs:
 
     - name: Create Release
       id: create_release
-      uses: softprops/action-gh-release@v1
+      uses: softprops/action-gh-release@v2
       with:
         tag_name: ${{ github.ref_name }} # 你可以根据需要修改版本号
         release_name: ${{ github.ref_name }}
