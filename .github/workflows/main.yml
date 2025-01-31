@@ -13,12 +13,7 @@ jobs:
 
     - name: Install .NET Framework 4.0 Developer Pack
       run: |
-        choco install netfx-4.8.1-devpack -y
-
-    - name: Install Visual Studio components
-      run: |
-        # 安装 .NET Framework 4.0 相关组件
-        & "C:\Program Files (x86)\Microsoft Visual Studio\Installer\vs_installer.exe" --add Microsoft.VisualStudio.Workload.ManagedDesktop --includeRecommended --quiet --wait
+        choco install netfx-4.0.2-devpack -y
 
     - name: Setup Visual Studio
       uses: microsoft/setup-msbuild@v1.1
@@ -40,8 +35,8 @@ jobs:
       id: create_release
       uses: softprops/action-gh-release@v1
       with:
-        tag_name: v1.0.0 # 你可以根据需要修改版本号
-        release_name: Release v1.0.0
+        tag_name: ${{ github.ref_name }} # 你可以根据需要修改版本号
+        release_name: ${{ github.ref_name }}
         draft: false
         prerelease: false
       env:
