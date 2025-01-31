@@ -5,15 +5,11 @@ on:
 
 jobs:
   build:
-    runs-on: windows-latest
+    runs-on: windows-2019
 
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
-
-    - name: Install .NET Framework 4.0 Developer Pack
-      run: |
-        choco install netfx-4.0.2-devpack -y
 
     - name: Setup Visual Studio
       uses: microsoft/setup-msbuild@v1.1
