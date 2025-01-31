@@ -20,6 +20,10 @@ jobs:
       run: |
         msbuild LaserGRBL.sln /p:Configuration=Release
 
+    - name: Build the project
+      run: |
+        dir /s /b
+
     - name: Create Release Package
       run: |
         # 假设生成的文件在 bin/Release 目录下
