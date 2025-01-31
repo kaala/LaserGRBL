@@ -36,6 +36,6 @@ jobs:
         draft: false
         prerelease: false
         files: |
-          release\package.zip
+          release/package.zip
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
