@@ -13,7 +13,7 @@ jobs:
 
     - name: Install .NET Framework 4.0 Developer Pack
       run: |
-        choco install netfx-4.0-devpack -y
+        choco install netfx-4.8.1-devpack -y
 
     - name: Setup Visual Studio
       uses: microsoft/setup-msbuild@v1.1
