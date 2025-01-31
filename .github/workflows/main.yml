@@ -35,13 +35,7 @@ jobs:
         release_name: ${{ github.ref_name }}
         draft: false
         prerelease: false
+        files: |
+          release\package.zip
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-    - name: Upload Release Asset
-      uses: softprops/action-gh-release@v1
-      with:
-        upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: release\package.zip
-        asset_name: package.zip
-        asset_content_type: application/zip
